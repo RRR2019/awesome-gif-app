@@ -3,8 +3,8 @@ var gifList = [];
 function createImg(response) {
   for (i = 0; i < gifList.length; i++) {
     var gif = $("<img>");
-    gif.attr("src", response.data.original.url);
-    gif.attr("alt", response.data, slug + " Gif");
+    gif.attr("src", response.data[i].images.original.url);
+    gif.attr("alt", response.data[i].title + " Gif");
 
     var image = $("<div>");
     image.append(gif);
@@ -28,13 +28,11 @@ function getGif(gifSearch) {
     url: queryURL,
     method: "GET"
   }).done(function(response) {
-    if (response.Response === "False") {
-      alert(response.Error);
-    } else {
-      console.log(response.data.id);
-      createImg(response);
-      gifList.push(response.data.id);
+    console.log(response.data.length);
+    for (var j = 0; j < response.data.length; j++) {
+      gifList.push(response.data[j].title);
     }
+    createImg(response);
   });
 }
 
