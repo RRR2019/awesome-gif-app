@@ -5,10 +5,11 @@ function createImg(response) {
     var gif = $("<img>");
     gif.attr("src", response.data[i].images.original.url);
     gif.attr("alt", response.data[i].title + " Gif");
+    gif.attr("class", "img-thumbnail");
 
     var image = $("<div>");
     image.append(gif);
-    $(".col-md-12").append(image); // to show the image in body
+    $(".card-body").append(image); // to show the image in body
   }
 }
 
@@ -19,9 +20,7 @@ for (var i = 0; i < gifList.length; i++) {
 function getGif(gifSearch) {
   // queryURL endpoint for OMDB API
   var queryURL =
-    "https://api.giphy.com/v1/gifs/search?q=" +
-    gifSearch +
-    "&api_key=A8zXa2FhTisNo4nWf63dDEFxlyhwUClg&limit=5";
+    "https://api.giphy.com/v1/gifs/search?q=" + gifSearch + "&api_key=A8zXa2FhTisNo4nWf63dDEFxlyhwUClg&limit=5";
 
   // AJAX call to OBMD API with promise and callback handler
   $.ajax({
@@ -40,4 +39,6 @@ $("#search").click(function() {
   var gifName = $("#gif-name").val();
   console.log(gifName);
   getGif(gifName);
+  $(".card-body").empty();
+  $("#gif-name").empty();
 });

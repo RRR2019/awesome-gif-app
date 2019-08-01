@@ -1,3 +1,7 @@
 .container h1 {
   color: blue;
 }
+
+.img-thumbnail {
+  float: left;
+}
