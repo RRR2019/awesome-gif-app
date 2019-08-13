@@ -1,7 +1,13 @@
 .container h1 {
-  color: blue;
+  margin-top: 1em;
+  color: yellowgreen;
+  font-family: 'Fredoka One', cursive;
 }
 
 .img-thumbnail {
   float: left;
+}
+
+body{
+  background-color: navy;
 }
